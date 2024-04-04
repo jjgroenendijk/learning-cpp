@@ -16,21 +16,42 @@
 
 using namespace std;
 
-int main() {
-    float number, rounded_number, sqrt_number;
+int main()
+{
+    // open file
+    ofstream file("result.txt");
 
-    while (number < 5.1 || number > 10.2) {
-        cout << "Please enter a number between 5.1 and 10.2: ";
-        cin >> number;
+    // check if opening file succeeded 
+    if (!file.is_open())
+    {
+        cout << "Error opening file" << endl;
+        exit(1);
     }
 
-    sqrt_number = sqrt (number);
-    rounded_number = round (sqrt_number * 100) / 100;
+    // Variables
+    float number[4], rounded_number[4], sqrt_number[4];
 
-    cout << rounded_number << endl;
+    // repeat 4 times
+    for (int i = 0; i < 4; i++)
+    {
+        while (number[i] < 5.1 || number[i] > 10.2)
+        {
+            cout << "Please enter a number between 5.1 and 10.2: ";
+            cin >> number[i];
+        }
 
-    // Write input number and calculated square root to a file
+        //sqrt_number[i] = (sqrt(number[i]));
 
+        rounded_number[i] = round( (sqrt(number[i]) ) * 100) / 100;
+
+        cout << rounded_number[i] << endl;
+
+        // Write result to file
+        file << number[i] << ", " << rounded_number[i] << endl;
+    }
+
+    // close file
+    file.close();
 
     return 0;
 }

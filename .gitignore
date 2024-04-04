@@ -3,6 +3,13 @@
 !/**/
 !*.*
 
+#VSCode folder
+.vscode
+
+# Special cases
+result.txt
+tempCodeRunnerFile.cpp
+
 # Prerequisites
 *.d
 
